@@ -12,6 +12,7 @@
   "dependencies": {
     "@vladmandic/face-api": "^1.7.15",
     "jsqr": "^1.4.0",
+    "lucide-react": "^1.52.0",
     "openai": "^7.27.0",
     "qrcode": "^1.5.4",
     "react": "^19.2.8",
