@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   SmartAttend Design System
+   Single source of truth for visual language
+   ============================================ */
+
 :root {
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 * {
@@ -24,46 +28,49 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  letter-spacing: -0.01em;
+/* Visible, consistent focus states (accessibility) */
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
-.font-heading { font-family: var(--font-heading); }
-
-/* Custom scrollbar */
+/* Custom scrollbar — neutral */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.4);
+  background: #cbd5e1;
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.7); }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-/* Animations */
+/* Safe-area helpers for mobile bottom nav / notches */
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.h-dvh-full { height: 100dvh; }
+
+/* Animations (subtle, 150–250ms) */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes pulse-slow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
-}
 @keyframes shimmer {
   0% { background-position: -1000px 0; }
   100% { background-position: 1000px 0; }
 }
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
 
-.animate-fade-in-up { animation: fadeInUp 0.5s ease-out both; }
-.animate-fade-in { animation: fadeIn 0.4s ease-out both; }
-.animate-pulse-slow { animation: pulse-slow 2s ease-in-out infinite; }
+.animate-fade-in-up { animation: fadeInUp 0.25s ease-out both; }
+.animate-fade-in { animation: fadeIn 0.2s ease-out both; }
 
 /* Skeleton shimmer */
 .skeleton {
   background: linear-gradient(90deg, #e2e8f0 0%, #f1f5f9 50%, #e2e8f0 100%);
   background-size: 1000px 100%;
-  animation: shimmer 2s infinite linear;
+  animation: shimmer 1.6s infinite linear;
 }
 
 /* Loading dots */
@@ -77,7 +84,3 @@ h1, h2, h3, h4, h5, h6 {
 }
 .loader-dots span:nth-child(1) { animation-delay: -0.32s; }
 .loader-dots span:nth-child(2) { animation-delay: -0.16s; }
-@keyframes bounce {
-  0%, 80%, 100% { transform: scale(0); }
-  40% { transform: scale(1); }
-}
